@@ -20,3 +20,9 @@ int stackEmpty(Stack *ps);
 void clearStack(Stack *ps);
 
 void stackTop(stackEntry *pe, Stack *ps);
+
+int stackSize(Stack *ps);
+
+void copyStack(Stack *ps, Stack *pcs);
+
+void traverseStack(Stack *ps, void (*pVisit)(stackEntry));

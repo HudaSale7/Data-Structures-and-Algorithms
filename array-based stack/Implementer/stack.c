@@ -33,3 +33,22 @@ void clearStack(Stack *ps) {
 void stackTop(stackEntry *pe, Stack *ps) {
     *pe = ps->entry[ps->top - 1];
 }
+
+int stackSize(Stack *ps) {
+    return ps->top;
+}
+
+void copyStack(Stack *ps, Stack *pcs) {
+    pcs->top = ps->top;
+    for (int i = 0; i < ps->top; i++)
+    {
+        pcs->entry[i] = ps->entry[i];
+    }
+}
+
+void traverseStack(Stack *ps, void (*pVisit)(stackEntry)) {
+    for (int i = ps->top - 1; i >= 0; i--)
+    {
+        (*pVisit)(ps->entry[i]);
+    }
+}
