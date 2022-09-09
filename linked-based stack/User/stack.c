@@ -1,12 +1,19 @@
 #include "stack.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 void createStack(Stack *ps) {
     ps->top = NULL;
     ps->size = 0;
 }
 
 void push(stackEntry e, Stack *ps) {
+    if (ps->top == NULL)
+        ps->min = e;
+    else
+    {
+        if (e < ps->min)
+            ps->min = e;
+    }
     stackNode *pNode;
     pNode = (stackNode*) malloc(sizeof(stackNode));
     pNode->entry = e;
@@ -34,11 +41,14 @@ int stackEmpty(Stack *ps) {
 
 void clearStack(Stack *ps) {
     stackNode *pNode;
-    while (ps->top)
+    if (ps->top == NULL)
+        return 0;
+    else
     {
         pNode = ps->top;
         ps->top = pNode->next;
         free(pNode);
+        clearStack(ps);
     }
     ps->size = 0;
 }
@@ -81,4 +91,8 @@ void traverseStack(Stack *ps, void (*pVisit)(stackEntry)) {
         (*pVisit)(pNode->entry);
         pNode = pNode->next;
     }
+}
+
+char findMin (Stack *ps) {
+    return ps->min;
 }

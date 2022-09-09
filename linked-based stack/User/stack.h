@@ -10,6 +10,7 @@ typedef struct stack
 {
     stackNode *top;
     int size;
+    char min;
 } Stack;
 
 void createStack(Stack *ps);
@@ -31,3 +32,5 @@ int stackSize(Stack *ps);
 void copyStack(Stack *ps, Stack *pcs);
 
 void traverseStack(Stack *ps, void (*pVisit)(stackEntry));
+
+char findMin(Stack *ps);

@@ -67,6 +67,14 @@ int main()
             printf("\n-------------------------\n");
             break;
         case 7:
+            if (stackEmpty(&myStack))
+                printf("\nStack is empty!");
+            else
+                printf("minimum element: %c", findMin(&myStack));
+
+            printf("\n-------------------------\n");
+            break;
+        case 8:
             exit(1);
         default:
             break;
@@ -84,7 +92,8 @@ int menu()
     printf("  4. What is the stack size?\n");
     printf("  5. Read the last element.\n");
     printf("  6. Display the elements.\n");
-    printf("  7. Exit.\n");
+    printf("  7. minimum element.\n");
+    printf("  8. Exit.\n");
     printf("  Your option --> ");
     scanf("%d", &option);
     return option;
