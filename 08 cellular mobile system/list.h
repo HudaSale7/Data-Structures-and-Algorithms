@@ -1,5 +1,4 @@
-#define MAXLIST 100
-#define listEntry char
+#include "global.h"
 
 typedef struct listnode
 {
