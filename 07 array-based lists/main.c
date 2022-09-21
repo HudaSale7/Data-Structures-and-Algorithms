@@ -25,14 +25,12 @@ int main()
         case 2:
             printf("\nEnter the element: ");
             fflush(stdin);
-            scanf("%c", &element);
-            printf("\nEnter the position: ");
-            fflush(stdin);
-            scanf("%d", &position);
+            scanf("%d", &element);
+
             if (listFull(&myList))
                 printf("\nList is full!");
             else
-                insertList(position, element, &myList);
+                insertOrder(element, &myList);
 
             printf("\n-------------------------\n");
             break;
@@ -45,7 +43,7 @@ int main()
                 fflush(stdin);
                 scanf("%d", &position);
                 deleteList(position, &element, &myList);
-                printf("\nthe element deleted is: %c", element);
+                printf("\nthe element deleted is: %d", element);
             }
             printf("\n-------------------------\n");
             break;
@@ -62,7 +60,7 @@ int main()
                 fflush(stdin);
                 scanf("%d", &position);
                 retrieveList(position, &element, &myList);
-                printf("\nthe element is: %c", element);
+                printf("\nthe element is: %d", element);
             }
             printf("\n-------------------------\n");
             break;
@@ -79,14 +77,26 @@ int main()
                 printf("\nList is empty!");
             else
                 printf("\nEnter the element: ");
-                fflush(stdin);
-                scanf("%c", &element);
-                printf("\nEnter the position: ");
-                fflush(stdin);
-                scanf("%d", &position);
-                replaceList(position, element, &myList);
+            fflush(stdin);
+            scanf("%d", &element);
+            printf("\nEnter the position: ");
+            fflush(stdin);
+            scanf("%d", &position);
+            replaceList(position, element, &myList);
             printf("\n-------------------------\n");
             break;
+        case 8:
+            if (listEmpty(&myList))
+                printf("\nList is empty!");
+            else
+            {
+                printf("\nEnter the element: ");
+                fflush(stdin);
+                scanf("%d", &element);
+                position = binarySearch(element, &myList);
+                printf("\nthe position of the element is: %d", position);
+                printf("\n-------------------------\n");
+            }
         default:
             break;
         }
@@ -104,11 +114,13 @@ int menu()
     printf("  5. view element.\n");
     printf("  6. Display the elements.\n");
     printf("  7. replace element.\n");
+    printf("  8. search for element.\n");
     printf("  Your option --> ");
     scanf("%d", &option);
     return option;
 }
 
-void display(listEntry element) {
-    printf("%c\n", element);
+void display(listEntry element)
+{
+    printf("%d\n", element);
 }

@@ -95,6 +95,7 @@ void retrieveList(int pos, listEntry *pe, List *pList) {
     *pe = pList->current->entry;
 }
 
+
 void replaceList(int pos, listEntry e, List *pList) {
     if (pList->currentPos <= pos) {
         pList->current = pList->head;
@@ -103,5 +104,17 @@ void replaceList(int pos, listEntry e, List *pList) {
     for (; pList->currentPos != pos; pList->currentPos++)
         pList->current = pList->current->next;
     pList->current->entry = e;
+}
+
+
+int sequentialSearch(listEntry e, List *pList) {
+    listNode *pNode = pList->head;
+    for (int i = 0; i < pList->size; i++)
+    {
+        if (e == pNode->entry)
+            return i;
+        pNode = pNode->next;
+    }   
+    return -1;
 }
 

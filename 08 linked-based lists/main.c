@@ -79,14 +79,26 @@ int main()
                 printf("\nList is empty!");
             else
                 printf("\nEnter the element: ");
-                fflush(stdin);
-                scanf("%c", &element);
-                printf("\nEnter the position: ");
-                fflush(stdin);
-                scanf("%d", &position);
-                replaceList(position, element, &myList);
+            fflush(stdin);
+            scanf("%c", &element);
+            printf("\nEnter the position: ");
+            fflush(stdin);
+            scanf("%d", &position);
+            replaceList(position, element, &myList);
             printf("\n-------------------------\n");
             break;
+        case 8:
+            if (listEmpty(&myList))
+                printf("\nList is empty!");
+            else
+            {
+                printf("\nEnter the element: ");
+                fflush(stdin);
+                scanf("%c", &element);
+                position = sequentialSearch(element, &myList);
+                printf("\nthe position of the element is: %d", position);
+                printf("\n-------------------------\n");
+            }
         default:
             break;
         }
@@ -104,11 +116,13 @@ int menu()
     printf("  5. view element.\n");
     printf("  6. Display the elements.\n");
     printf("  7. replace element.\n");
+    printf("  8. search for element.\n");
     printf("  Your option --> ");
     scanf("%d", &option);
     return option;
 }
 
-void display(listEntry element) {
+void display(listEntry element)
+{
     printf("%c\n", element);
 }

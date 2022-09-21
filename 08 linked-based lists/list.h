@@ -25,3 +25,4 @@ void deleteList(int pos, listEntry *pe, List *pList);
 void traverseList(List *pList, void (pVisit)(listEntry));
 void retrieveList(int pos, listEntry *pe, List *pList);
 void replaceList(int pos, listEntry e, List *pList);
+int sequentialSearch(listEntry e, List *pList);
