@@ -26,8 +26,8 @@ void sort(vector<int>& original, int start, int end) {
 }
 
 int partition(vector<int>& original, int start, int end) {
-    int pivotIndex = 0;
-    for (int i = 0; i < end; i++)
+    int pivotIndex = start;
+    for (int i = start; i < end; i++)
     {
         if(original[i] < original[end]) {
             swap(original, pivotIndex, i);
